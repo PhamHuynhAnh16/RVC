@@ -11,11 +11,15 @@ tqdm
 # Audio processing
 ffmpeg-python>=0.2.0
 PolUVR[gpu]
-torchcrepe
-torchfcpe
+praat-parselmouth
+matplotlib==3.7.2
+#torchcrepe
+#torchfcpe
 edge-tts
 
 # Machine learning and deep learning
+onnxruntime; sys_platform == 'darwin'
+onnxruntime-gpu; sys_platform != 'darwin'
 torch==2.6
 torchaudio==2.6
 torchvision==0.21

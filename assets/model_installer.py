@@ -3,7 +3,7 @@ import os
 import requests
 from tqdm import tqdm
 
-PREDICTORS = "https://huggingface.co/Politrees/RVC_resources/resolve/main/predictors/"
+PREDICTORS = "https://huggingface.co/AnhP/Vietnamese-RVC-Project/resolve/main/predictors/"#"https://huggingface.co/Politrees/RVC_resources/resolve/main/predictors/"
 EMBEDDERS = "https://huggingface.co/Politrees/RVC_resources/resolve/main/embedders/pytorch/"
 
 PREDICTORS_DIR = os.path.join(os.getcwd(), "rvc", "models", "predictors")
@@ -36,10 +36,12 @@ def dl_model(link, model_name, dir_name):
             f.write(chunk)
             bar.update(len(chunk))
 
-
-def check_and_install_models():
+def check_and_install_models(f0_onnx=False):
     try:
-        predictors_names = ["rmvpe.pt", "fcpe.pt"]
+        predictors_names = ["rmvpe.pt", "fcpe.pt", "fcpe_legacy.pt", "crepe_full.pth", "crepe_large.pth", "crepe_medium.pth", "crepe_small.pth", "crepe_tiny.pth", "fcn.pt"]
+        if f0_onnx:
+            predictors_names += ["rmvpe.onnx", "fcpe.onnx", "fcpe_legacy.onnx", "crepe_full.onnx", "crepe_large.onnx", "crepe_medium.onnx", "crepe_small.onnx", "crepe_tiny.onnx", "fcn.onnx"]
+
         for model in predictors_names:
             dl_model(PREDICTORS, model, PREDICTORS_DIR)
 
