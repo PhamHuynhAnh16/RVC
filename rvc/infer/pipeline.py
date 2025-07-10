@@ -123,7 +123,7 @@ class VC:
         autopitch_threshold,
         autotune,
         autotune_strength,
-   930):
+    ):
         """
         Obtains F0 (fundamental frequency) using the specified method.
         """
